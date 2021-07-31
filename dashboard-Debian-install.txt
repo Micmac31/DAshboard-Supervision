@@ -57,7 +57,7 @@ in the dashboard folder and modify in file (if you want ex):
 						  ^
 3) Start Smashing
 go to dashboard folder
-smashing start
+smashing start -d
 - Go to your browser and access the address of your machine followed by: 3030: http://IPOFDASHBOARD:3030.
 
 To stop dashboard
