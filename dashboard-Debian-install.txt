@@ -1,0 +1,68 @@
+1) The basics to prepare
+- Debian 10 with Apache
+- A fixed IP for your server
+- Your user and password + that of root 
+
+2) Install
+sudo apt-get install libssl-dev ruby-dev nodejs bundler rubygems default-libmysqlclient-dev libmariadb-dev libjq-dev jq curl
+- Then install Smashing (more informations: https://smashing.github.io/)
+sudo gem install smashing
+
+- Create dashboard
+Run the following command:
+smashing new dashboard 
+
+- Once Smashing is correctly installed on your machine, you need to create our dashboard.
+Go to the directory where you want to store your data for me it's direct in simpler home:
+
+- And install ruby dependency
+sudo gem install ruby-jq -- --use-system-libraries
+cd dashboard
+bundle
+- It will take a few minutes. Once the installation is complete, you can launch Smashing via this command: 
+smashing start
+- Be careful, if you leave the terminal, Smashing will stop. You must leave this terminal open to be able to access your dashboard at the end of the tutorial, I will tell you how to leave it running in the background.
+- Go to your browser and access the address of your machine followed by: 3030: http://IPOFDASHBOARD:3030.
+By default, Smashing provides two dashboards: sample and sampletv.
+
+- Now the folder of your new dashboard contains (!!!! FOR MODIFY THIS FILES DON'T USE ROOT)
+assets  config.ru  dashboards  Gemfile  Gemfile.lock  history.yml  jobs  lib  public  README.md  widgets 
+
+- Now we will create our basic dashboard
+- ctrl + c to stop smashing
+- Edit the file:
+nano Gemfile
+
+- Add at the end of the file if not present
+gem 'curl'
+gem 'ruby-jq'
+gem 'json'
+
+- ctrl + x to save then:
+bundle
+password root
+
+- Modification of the size of the tiles:
+in nano assets / javascripts / application.coffee
+and modify it like this 
+Dashing.on 'ready', ->
+  Dashing.widget_margins ||= [8, 8]
+  Dashing.widget_base_dimensions ||= [300, 500]
+
+- Copy .erb file
+in the dashboard folder and modify in file (if you want ex):
+<% content_for :title do %>NAME OF DASHBOARD<% end %>
+				^
+<div data-id="cent" data-view="cent" data-title="NAME OF TILE"></div>
+						  ^
+3) Start Smashing
+go to dashboard folder
+smashing start
+- Go to your browser and access the address of your machine followed by: 3030: http://IPOFDASHBOARD:3030.
+
+To stop dashboard
+go to dashboard folder
+smashing stop
+
+
+ 
