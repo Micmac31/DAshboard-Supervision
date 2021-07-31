@@ -1,0 +1,94 @@
+$background: #444;
+$text: #fff;
+$success: #33cc33;
+$warning: #e9ab17;
+$failure: #e0094f;
+$ping: #070100;
+
+.widget-cent {
+li {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+padding-top: 0px;
+
+h1 {
+font-size: 45px;
+}
+
+H2 {
+font-size: 40px; 
+font-weight: bold;
+text-transform: uppercase;
+}
+  
+h3 {
+font-size: 25px;
+font-weight: bold;
+text-transform: uppercase;
+}
+
+h4 {
+font-size: 20px;
+font-weight: bold;
+color: $ping;
+}
+
+p &.updated-at {
+font-size: 10px;
+}
+
+&.green {
+background-color: $success;
+p {
+&.updated-at {
+color: lighten($text, 20%);
+}
+}
+}
+
+&.yellow {
+background-color: $warning;
+p {
+&.updated-at {
+color: lighten($text, 20%);
+}
+}
+}
+
+&.red {
+background-color: $failure;
+p {
+&.updated-at {
+color: lighten($text, 20%);
+}
+}
+}
+
+&.out {
+background-color: $failure;
+animation: blink-animation 2s steps(5, start) infinite;
+-webkit-animation: blink-animation 2s steps(5, start) infinite;
+p {
+&.updated-at {
+color: lighten($text, 20%);
+}
+}
+}
+}
+}
+.blink {
+}
+@keyframes blink-animation {
+to {
+visibility: hidden;
+}
+}
+@-webkit-keyframes blink-animation {
+to {
+visibility: hidden;
+}
+}
+
